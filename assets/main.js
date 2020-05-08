@@ -8,7 +8,8 @@
 let searchButton = document.querySelector('#search-button');
 let input = document.querySelector('#textbox');
 let results = document.querySelector('#search-results');
-let sentence = document.querySelector('#sentence').innerText.toLowerCase();
+let paragraph = document.querySelector('#sentence');
+let sentence = paragraph.innerText.toLowerCase();
 let splitSentence = sentence.split(' ');
 let wordCount = 0;
 
@@ -26,8 +27,9 @@ searchButton.addEventListener('click', function () {
       }
       results.innerText = input.value + " found " + wordCount + " time(s)!";
       wordCount = 0;
-    }
-    ;
+    };
+    var re = new RegExp(inv, 'g');
+    paragraph.innerHTML = paragraph.innerText.replace(re, '<mark>$&</mark>');
  } else {
    results.innerText = "No results. Too bad!";
  }
